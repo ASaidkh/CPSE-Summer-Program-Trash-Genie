@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-
+#Function to set the angle of vertical servo motor, takes an integer between 0-174 as the degree value
 def setVert(angle):
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(18, GPIO.OUT)
@@ -16,7 +16,7 @@ def setVert(angle):
 	pwm.ChangeDutyCycle(duty)
 	pwm.stop()
 	GPIO.cleanup()
-	
+#Function to set the angle of the horizontal servo motor, takes an integer between 0-174 as the degree value	
 def setHorz(angle):
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(17, GPIO.OUT)
@@ -50,7 +50,7 @@ def metal():
     setHorz(150)
     setVert(15)
     center()
-    
+#Function to move servo motors to dump items into proper compartment, takes a string as an argument
 def dump(detection):
     if detection == "METAL":
         metal()
