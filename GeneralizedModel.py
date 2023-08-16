@@ -10,7 +10,7 @@ cap=cv2.VideoCapture(0)
 
 servo.center()
 #Load YOLOv5 Model, the third parameter is the path to the weights
-model = torch.hub.load("ultralytics/yolov5","custom","bestOfTheBest.pt")
+model = torch.hub.load("ultralytics/yolov5","custom","GeneralizedModel.pt")
 count =0
 while True: 
     
