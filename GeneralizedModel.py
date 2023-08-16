@@ -9,7 +9,7 @@ import torch
 cap=cv2.VideoCapture(0)
 
 servo.center()
-
+#Load YOLOv5 Model, the third parameter is the path to the weights
 model = torch.hub.load("ultralytics/yolov5","custom","bestOfTheBest.pt")
 count =0
 while True: 
@@ -24,7 +24,7 @@ while True:
         
         pred = model(frame)
       
-        
+        #If an object is detected with a 40% or greater confidence, print the detected results and dump the item into the proper compartment
         if len(pred.pandas().xyxy[0]['confidence']) > 0 :
             predInd = pred.pandas().xyxy[0]['confidence'].argmax()
             if pred.pandas().xyxy[0]['confidence'][predInd]>0.4 and (pred.pandas().xyxy[0]['name'][predInd] != "BIODEGRADABLE" or pred.pandas().xyxy[0]['name'][predInd] != "CLOTH"):
